@@ -71,4 +71,21 @@ li {
 a {
   color: #42b983;
 }
+
+img{
+  height:200px;
+}
+
+.card{
+  height: 400px;
+}
+
+.card-content{
+  height: 100px;
+}
+
+.card-action{
+  height: 100px;
+}
+
 </style>
