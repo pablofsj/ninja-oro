@@ -22,8 +22,8 @@
       <div class="col m12 s12">
         <div class="row">
           <h4>Actividades</h4>
-          <ul>
-            <li v-for="(actividad,i) in state.actividades" :key="i">{{actividad}}</li>
+          <ul class="collection">
+            <li class="collection-item" v-for="(actividad,i) in state.actividades" :key="i">{{actividad}}</li>
           </ul>
         </div>
       </div>

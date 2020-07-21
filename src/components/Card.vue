@@ -29,13 +29,12 @@ export default {
 
   methods: {
     totalOros: function(){
-      const fecha = new Date();
-      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute:'2-digit', hour12: true};
-      const fechaActual =  fecha.toLocaleDateString("es-CL", options);
-      /* let fechaactual = new Date().toLocaleDateString();  */
+      let fecha = new Date(); 
+      let fecha_larga = fecha.toLocaleDateString();
+      let hora_exacta = (fecha.getHours() + ":" + fecha.getMinutes());
       let aumento = this.generarNumeroRandom();
       store.aumentarOros(aumento);
-      store.agregaActividad(`Se han conseguido ${aumento} oros desde ${this.titulo} con fecha ${fechaActual}` )
+      store.agregaActividad(`Se han conseguido ${aumento} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`)
     },
 
     generarNumeroRandom: function(){
