@@ -19,15 +19,14 @@
       <Card v-for="(carta,i) in cartas" :key="i" :img_url="carta.img_url" :titulo="carta.titulo" :contenido="carta.contenido" :min="carta.min" :max="carta.max" ></Card>
     </div>
     <div class="row">
-      <form class="col m12 s12">
+      <div class="col m12 s12">
         <div class="row">
           <h4>Actividades</h4>
-          <div class="input-field col s12">
-            <input disabled value="" type="text" class="validate">
-            <label for="disabled"></label>
-          </div>
+          <ul>
+            <li v-for="(actividad,i) in state.actividades" :key="i">{{actividad}}</li>
+          </ul>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
