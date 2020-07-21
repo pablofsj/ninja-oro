@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="row">
-      <Card v-for="(carta,i) in cartas" :key="i" :img_url="carta.img_url" :titulo="carta.titulo" :contenido="carta.contenido" :min="carta.min" :max="carta.max" ></Card>
+      <Card v-for="(carta,i) in cartas" :key="i" :img_url="carta.img_url" :titulo="carta.titulo" :descripcion="carta.descripcion" :contenido="carta.contenido" :min="carta.min" :max="carta.max" ></Card>
     </div>
     <div class="row">
       <div class="col m12 s12">
@@ -43,10 +43,36 @@ export default {
   data: function (){
     return {
       cartas: [
-        {img_url:'https://k48b9e9840-flywheel.netdna-ssl.com/wp-content/uploads/2020/04/COVID-19-Relief_Small-Farms--1024x614.jpg',titulo:'Granja', min: 10, max:20 },
-        {img_url:'https://media-cdn.tripadvisor.com/media/photo-s/15/25/37/79/in-der-deer-cave.jpg',titulo:'Caverna', min:5 , max:10 },
-        {img_url:'https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg',titulo:'Casa', min:2 , max:5 },
-        {img_url:'https://tendenciasdigitales.com/web/wp-content/uploads/2019/06/Casino-en-l%C3%ADnea600x400.jpg',titulo:'Casino', min:0 , max:50},
+        {
+          img_url: 'https://k48b9e9840-flywheel.netdna-ssl.com/wp-content/uploads/2020/04/COVID-19-Relief_Small-Farms--1024x614.jpg',
+          titulo: 'Granja',
+          min: 10,
+          max: 20,
+          descripcion: 'Gana entre 10 y 20 oros'
+        },
+
+        {
+         img_url:'https://media-cdn.tripadvisor.com/media/photo-s/15/25/37/79/in-der-deer-cave.jpg',
+         titulo:'Caverna', 
+         min:5, 
+         max:10,
+         descripcion: 'Gana entre 5 y 10 oros'
+        },
+
+        {
+         img_url:'https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg',
+         titulo:'Casa', 
+         min:2 , 
+         max:5,
+         descripcion: 'Gana entre 2 y 5 oros' 
+        },
+
+        {img_url:'https://tendenciasdigitales.com/web/wp-content/uploads/2019/06/Casino-en-l%C3%ADnea600x400.jpg',
+        titulo:'Casino', 
+        min:-50 , 
+        max:50, 
+        descripcion: 'Gana ó pierde entre 0 y 50 oros'
+        },
       ],
       state: store.state
     }

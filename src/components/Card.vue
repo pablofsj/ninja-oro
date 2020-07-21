@@ -6,7 +6,7 @@
           <span class="card-title">{{ titulo }}</span>
         </div>
         <div class="card-content">
-          <p>Consigue entre {{ min }} y {{ max }} oros</p>
+          <p>{{ descripcion }}</p> 
         </div>
         <div class="card-action">
           <button @click="totalOros()" class="waves-effect waves-light btn-small">Encontrar oro!</button>
@@ -23,6 +23,7 @@ export default {
   props: {
     img_url: String,
     titulo: String,
+    descripcion: String,
     min: Number,
     max: Number,
   },
@@ -34,12 +35,21 @@ export default {
       let hora_exacta = (fecha.getHours() + ":" + fecha.getMinutes());
       let aumento = this.generarNumeroRandom();
       store.aumentarOros(aumento);
-      store.agregaActividad(`Se han conseguido ${aumento} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`)
+      let mensaje = '';
+
+      if(aumento < 0) {
+        mensaje = (`Haz perdido ${Math.abs(aumento)} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`);
+      }
+      else {
+        mensaje = (`Haz ganado ${aumento} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`);
+      }
+
+      store.agregaActividad(mensaje);
     },
 
     generarNumeroRandom: function(){
       return Math.floor(Math.random() * (this.max - this.min)) + this.min;  
-    },
+    }
   }
 }
 </script>
