@@ -12,7 +12,7 @@
     <br>
     <div class="row">
       <div class="col m12 s12">
-        <h4>Tu total de oro es: {{state.orosTotales}} oros</h4>
+        <h4>Tu total de oro es: <span :class="{ verde: state.orosTotales > 0, rojo: state.orosTotales < 0 }">{{state.orosTotales}}</span> oros</h4>
       </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
         <div class="row">
           <h4>Actividades</h4>
           <ul class="collection">
-            <li class="collection-item" v-for="(actividad,i) in state.actividades" :key="i">{{actividad}}<span class="new badge red" data-badge-caption="Quitar" @click="$delete(state.actividades, i)"></span> </li>  
+            <li :class="{ verde: actividad.valor > 0, rojo: actividad.valor < 0 }" class="collection-item" v-for="(actividad,i) in state.actividades" :key="i">{{actividad.texto}}<span class="new badge blue" data-badge-caption="Quitar" @click="$delete(state.actividades, i)"></span></li>  
           </ul>
         </div>
       </div>
@@ -87,8 +87,8 @@ export default {
 
   methods: {
     resetOros: function(){
-      var result = window.confirm("¿Estás seguro que quieres reiniciar tu juego? ¡Perderás todo tu progreso!");
-      if (result == true) {
+      var respuesta = window.confirm("¿Estás seguro que quieres reiniciar tu juego? ¡Perderás todo tu progreso!");
+      if (respuesta == true) {
         store.resetOros();
       }   
     }
@@ -99,6 +99,17 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+
+.verde{
+  color: green;
+  font-weight: bold;
+}
+
+.rojo{
+  color: red;
+  font-weight: bold;
+}
 
 h3{
     font-family: 'Fredoka One', cursive;

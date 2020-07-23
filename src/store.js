@@ -7,8 +7,8 @@ export default {
     aumentarOros: function(aumento) {
         this.state.orosTotales+=aumento;
     },
-    agregaActividad: function(actividadNueva){
-        this.state.actividades.push(actividadNueva);
+    agregaActividad: function(mensaje){
+        this.state.actividades.push(mensaje);
     },
     resetOros: function(){
         this.state.actividades = [];

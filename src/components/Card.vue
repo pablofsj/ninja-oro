@@ -29,6 +29,10 @@ export default {
   },
 
   methods: {
+    generarNumeroRandom: function(){
+      return Math.floor(Math.random() * (this.max - this.min)) + this.min
+    },
+
     totalOros: function(){
       let fecha = new Date(); 
       let fecha_larga = fecha.toLocaleDateString();
@@ -38,17 +42,23 @@ export default {
       let mensaje = '';
 
       if(aumento < 0) {
-        mensaje = (`Haz perdido ${Math.abs(aumento)} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`);
+        mensaje = {
+          texto:`Perdiste ${Math.abs(aumento)} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`,
+          valor: aumento
+          
+          }
       }
       else {
-        mensaje = (`Haz ganado ${aumento} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`);
+        mensaje = {
+          texto:`Ganaste ${aumento} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`,
+          valor: aumento
+        }
       }
 
       store.agregaActividad(mensaje);
-    },
-
-    generarNumeroRandom: function(){
-      return Math.floor(Math.random() * (this.max - this.min)) + this.min;  
+      
+    
+    
     }
   }
 }
