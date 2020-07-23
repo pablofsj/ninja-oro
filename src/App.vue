@@ -23,8 +23,15 @@
         <div class="row">
           <h4>Actividades</h4>
           <ul class="collection">
-            <li class="collection-item" v-for="(actividad,i) in state.actividades" :key="i">{{actividad}}</li>
+            <li class="collection-item" v-for="(actividad,i) in state.actividades" :key="i">{{actividad}}<span class="new badge red" data-badge-caption="Quitar" @click="$delete(state.actividades, i)"></span> </li>  
           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col m12 s12">
+        <div class="row">
+          <button @click="resetOros()" class="btn">Reiniciar juego</button>
         </div>
       </div>
     </div>
@@ -77,11 +84,26 @@ export default {
       state: store.state
     }
   },
-}
+
+  methods: {
+    resetOros: function(){
+      var result = window.confirm("¿Estás seguro que quieres reiniciar tu juego? ¡Perderás todo tu progreso!");
+      if (result == true) {
+        store.resetOros();
+      }   
+    }
+  }
+};
 
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+h3{
+    font-family: 'Fredoka One', cursive;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

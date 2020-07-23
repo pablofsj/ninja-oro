@@ -9,5 +9,9 @@ export default {
     },
     agregaActividad: function(actividadNueva){
         this.state.actividades.push(actividadNueva);
+    },
+    resetOros: function(){
+        this.state.actividades = [];
+        this.state.orosTotales = 0;
     }
   };
