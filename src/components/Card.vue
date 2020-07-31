@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import store from "@/store";
+
 
 export default {
   name: 'Card',
@@ -27,26 +27,22 @@ export default {
     min: Number,
     max: Number,
   },
-
   methods: {
-    generarNumeroRandom: function(){
+    generarNumeroRandom(){
       return Math.floor(Math.random() * (this.max - this.min)) + this.min
     },
-
-    totalOros: function(){
+    totalOros(){
       let fecha = new Date(); 
       let fecha_larga = fecha.toLocaleDateString();
       let hora_exacta = (fecha.getHours() + ":" + fecha.getMinutes());
       let aumento = this.generarNumeroRandom();
-      store.aumentarOros(aumento);
+      this.$store.commit('aumentarOros', aumento);
       let mensaje = '';
-
       if(aumento < 0) {
         mensaje = {
           texto:`Perdiste ${Math.abs(aumento)} oros desde ${this.titulo} con fecha ${fecha_larga} a las ${hora_exacta} hrs`,
           valor: aumento
-          
-          }
+        }
       }
       else {
         mensaje = {
@@ -54,11 +50,11 @@ export default {
           valor: aumento
         }
       }
-
-      store.agregaActividad(mensaje);
+      
+      this.$store.commit('agregaActividad', mensaje);
       
     
-    
+  
     }
   }
 }
@@ -67,8 +63,6 @@ export default {
 
 
 <style scoped>
-
-
 h3 {
   margin: 40px 0 0;
 }
@@ -83,21 +77,16 @@ li {
 a {
   color: #42b983;
 }
-
 img{
   height:200px;
 }
-
 .card{
   height: 400px;
 }
-
 .card-content{
   height: 100px;
 }
-
 .card-action{
   height: 100px;
 }
-
 </style>
